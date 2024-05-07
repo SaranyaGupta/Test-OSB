@@ -1,0 +1,30 @@
+tags = {
+  "company"                      = "iberia"
+  "delete_after"                 = "never"
+  "environment"                  = "pre"
+  "typeproject"                  = "osb-infra"
+  "terraform"                    = "true"
+  "group:component-grouping"     = "software-engineering--osb--infra"
+  "ib:resource:environment"      = "pre"
+  "ib:account:environment"       = "pre"
+  "ib:resource:environment-type" = "pre"
+  "ib:account:name"              = "workloads-sdlc-pre-common"
+}
+compute-tags = {
+  "ib:resource:type:backup"  = "false"
+  "ib:resource:monitoring"   = "false"
+  "ib:resource:environment"  = "pre"
+  "group:component-grouping" = "software-engineering--osb--infra"
+  "ib:account:name"          = "workloads-sdlc-pre-common"
+}
+account_number      = "237106410778"
+#account_number      = "320499260083"
+name_vpc            = ""OSB-PRE-VPC""
+ami_master          = "ami-095517e563ec82ffc"
+#ami_master          = "ami-07caf09b362be10b8"
+ec2_1_instance_type = "m5.xlarge"
+private_ip          = "10.99.132.64"
+vpc_cidr            = "10.99.132.0/24"
+transit_gateway          = "tgw-0db3fdc0f9da71974"
+vpc_private_subnets_cluster  = ["10.99.132.64/26","10.99.132.0/26"]
+kms_ebs = "arn:aws:kms:eu-west-1:237106410778:key/d57e2c89-e476-4baf-9351-a406ef069cf0"
