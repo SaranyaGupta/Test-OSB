@@ -17,9 +17,12 @@ on:
         - Preproduction
         - Production        
       
-jobs:    
-  TERRAFORM:
-    uses: Iberia-Ent/software-engineering--workflow-terraform/.github/workflows/ci-cd-terraform.yml@v1.5
-    with:
-       ENVIRONMENT_NAME: ${{ github.event.inputs.ENVIRONMENT_NAME }}       
-    secrets: inherit
+  - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: "eu-west-1"
+# running terraform init
+      - name: Teraform init
+        run: terraform init
