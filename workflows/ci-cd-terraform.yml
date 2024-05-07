@@ -1,1 +1,25 @@
+# Description: Workflow that allow you to deploy infrastructure as a code.
+# Version 1.5.0
+# GitHub Code: https://github.com/Iberia-Ent/software-engineering--workflow-terraform"
+name: CICD_TERRAFORM
+run-name: ${{ inputs.ENVIRONMENT_NAME }} - ${{ github.ref_name }}
 
+on:
+  workflow_dispatch:
+    inputs:
+      ENVIRONMENT_NAME:
+        description: 'Environment or Account to deploy your code.'
+        required: true
+        default: 'Integration'
+        type: choice
+        options:
+        - Integration
+        - Preproduction
+        - Production        
+      
+jobs:    
+  TERRAFORM:
+    uses: Iberia-Ent/software-engineering--workflow-terraform/.github/workflows/ci-cd-terraform.yml@v1.5
+    with:
+       ENVIRONMENT_NAME: ${{ github.event.inputs.ENVIRONMENT_NAME }}       
+    secrets: inherit
